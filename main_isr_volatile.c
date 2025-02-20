@@ -1,22 +1,21 @@
-#include "asf.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-int g_cnt = 0;
-volatile f_btn = 0; // deveria ser volatile
+volatile int f_btn = 0;
 
 // ISR
 void btn_callback(void) {
-  f_btn = 1; // variável alterada de uma interrupcão
+    f_btn = 1; 
 }
 
 void main(void) {
 
-  volatile int f_btn = 0;
-  int cnt = 0;
+    int cnt = 0;
 
-  while (1) {
-    if (f_btn) {
-      cnt++;
-      f_btn = 0;
+    while (1) {
+        if (f_btn) {
+            cnt++;
+            f_btn = 0;
+        }
     }
-  }
 }
